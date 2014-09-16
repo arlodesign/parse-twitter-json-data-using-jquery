@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="HandheldFriendly" content="True">
+
+  <meta name="author" content="Keenan Payne">
+
+  <title>Sprout Social Challenge</title>
+
+  <link rel="stylesheet" type="text/css" media="screen" href="css/site.min.css" />
+
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script type="text/javascript" src="js/tweets.min.js"></script>
+  <script src="//use.typekit.net/zmq1jku.js"></script>
+  <script>try{Typekit.load();}catch(e){}</script>
+</head>
+
+<body>
+  <header class="site-header">
+    <img src="images/logo.png" alt="Sprout Social Logo" class="logo align-center">
+  </header><!-- .site-header -->
+
+  <div class="dashboard container">
+    <div class="tweets-container">
+      <div class="tweets-list">
+        <h3 class="dashboard-header">
+          Incoming Tweets
+          <small>Accross your Twitter account</small>
+        </h3>
+
+        <div class="well">
+          <div class="table-responsive">
+            <table class="table-sort">
+              <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Message</th>
+                    <th scope="col">Date</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+
+                <tbody class="tweets-result"></tbody>
+            </table><!-- .table -->
+          </div><!-- .table-responsive -->
+        </div><!-- .well -->
+      </div><!-- .tweets-list -->
+
+      <div class="tweets-summary">
+        <h3 class="dashboard-header">Summary</h3>
+
+        <div class="well">
+          <div class="tweets-total clearfix">
+            <p class="float-left">Total Tweets</p>
+            <p class="total float-right">0</p>
+          </div>
+
+          <div class="tweets-follow-up clearfix">
+            <p class="float-left">Marked for Follow Up</p>
+            <p class="total float-right">0</p>
+          </div>
+        </div><!-- .well -->
+      </div><!--.tweets-summary -->
+    </div><!-- .tweets-container -->
+  </div><!-- .dashboard -->
+</body>
+</html>

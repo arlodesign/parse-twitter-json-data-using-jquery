@@ -1,0 +1,251 @@
+//------------------------------------
+//  SITE HEADER
+//------------------------------------
+.site-header {
+  background: rgb(85,85,85);
+  background: -moz-linear-gradient(top,  rgba(85,85,85,1) 0%, rgba(38,38,38,1) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(85,85,85,1)), color-stop(100%,rgba(38,38,38,1)));
+  background: -webkit-linear-gradient(top,  rgba(85,85,85,1) 0%,rgba(38,38,38,1) 100%);
+  background: -o-linear-gradient(top,  rgba(85,85,85,1) 0%,rgba(38,38,38,1) 100%);
+  background: -ms-linear-gradient(top,  rgba(85,85,85,1) 0%,rgba(38,38,38,1) 100%);
+  background: linear-gradient(to bottom,  rgba(85,85,85,1) 0%,rgba(38,38,38,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#555555', endColorstr='#262626',GradientType=0 );
+  padding: 18px;
+
+  .logo { height: 30px; }
+}
+
+
+
+
+//------------------------------------
+//  DASHBOARD
+//------------------------------------
+.dashboard {
+  margin-top: 20px;
+
+
+  // Typography
+  .dashboard-header {
+    font-weight: bold;
+    text-transform: uppercase;
+
+    small {
+      color: #909090;
+      @include font-size(14px);
+      font-family: $base-font-family;
+      font-weight: normal;
+      text-transform: none;
+    }
+  }
+
+
+  // Objects
+  .well {
+    background-color: #fff;
+    border: 1px solid #dfdfdf;
+    border-radius: 1px;
+    box-shadow: 0px 2px 2px 0px rgba(50, 50, 50, 0.1);
+  }
+}
+
+
+
+
+//------------------------------------
+//  INCOMING TWEETS
+//------------------------------------
+.tweets-container {
+  @include row;
+
+  table {
+    thead { border-bottom: 2px solid $object-ui-color; }
+
+    th {
+      padding: 15px 10px;
+      text-align: left;
+    }
+
+    td {
+      border-top: 1px solid $object-ui-color;
+      padding: 5px 10px;
+    }
+
+    tr td:first-of-type { padding-left: 0px; }
+
+    tr td:last-of-type { padding-right: 0px; }
+  }
+}
+
+.tweets-list {
+  @include column(12, 16, true, strip-units($gutters), 60em);
+
+  @include breakpoint($medium-start) {
+    .tweet-date,
+    .tweet-options { width: 115px; }
+  }
+
+  .tweet-remove { margin-top: 6px; }
+}
+
+.tweet-avatar img { border-radius: 50%; }
+
+
+
+
+//------------------------------------
+//  INCOMING TWEETS SUMMARY
+//------------------------------------
+.tweets-summary {
+  @include font-size(14px);
+  @include column(4, 16, true, strip-units($gutters), 60em);
+
+  .total { font-weight: bold; }
+
+  .tweets-total {
+    border-bottom: 1px solid $object-ui-color;
+
+    p { margin-bottom: 12px; }
+  }
+
+  .tweets-follow-up {
+    p { margin: 12px 0; }
+  }
+}
+
+
+
+
+//------------------------------------
+//  DATATABLES
+//------------------------------------
+.dataTables_wrapper {
+  padding: 24px 0;
+
+  &:after {
+    clear: both;
+    content: "";
+    display: block;
+    height: 0;
+    visibility: hidden;
+  }
+}
+
+table.dataTable {
+  thead {
+    th:active,
+    td:active { outline:none; }
+
+    .sorting { background:url("../images/sort_both.png") no-repeat center right; }
+
+    .sorting_asc { background:url("../images/sort_asc.png") no-repeat center right; }
+
+    .sorting_desc { background:url("../images/sort_desc.png") no-repeat center right; }
+
+    .sorting_asc_disabled { background:url("../images/sort_asc_disabled.png") no-repeat center right; }
+
+    .sorting_desc_disabled { background:url("../images/sort_desc_disabled.png") no-repeat center right; }
+  }
+}
+
+// Number of entries to show & search
+.dataTables_length,
+.dataTables_filter {
+  @include font-size(14px);
+  padding-bottom: 12px;
+}
+
+.dataTables_length { float: left; }
+
+.dataTables_filter {
+  float: right;
+
+  input { margin-left: 10px; }
+}
+
+// How many table entries are shown
+.dataTables_info {
+  @include font-size(12px);
+  float: left;
+  margin-top: 10px;
+}
+
+// Entry pagination
+.dataTables_paginate{
+  float: right;
+  @include font-size(14px);
+
+  .paginate_button {
+    border: 1px solid transparent;
+    box-sizing: border-box;
+    color: #333 !important;
+    cursor: pointer;
+    display: inline-block;
+    margin-left: 2px;
+    min-width: 1.5em;
+    padding: 0.5em 1em;
+    text-align: center;
+    text-decoration: none !important;
+
+    &.current,
+    &.current:hover {
+      border: 1px solid #cacaca;
+      background-color: #fff;
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fff), color-stop(100%, #dcdcdc));
+      background: -webkit-linear-gradient(top, #fff 0%, #dcdcdc 100%);
+      background: -moz-linear-gradient(top, #fff 0%, #dcdcdc 100%);
+      background: -ms-linear-gradient(top, #fff 0%, #dcdcdc 100%);
+      background: -o-linear-gradient(top, #fff 0%, #dcdcdc 100%);
+      background: linear-gradient(to bottom, #fff 0%, #dcdcdc 100%);
+      color: #333 !important;
+    }
+
+    &.disabled,
+    &.disabled:hover,
+    &.disabled:active {
+      background: transparent;
+      border: 1px solid transparent;
+      box-shadow: none;
+      color: #666 !important;
+      cursor: default;
+    }
+
+    &:hover {
+      background-color: #585858;
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #585858), color-stop(100%, #111));
+      background: -webkit-linear-gradient(top, #585858 0%, #111 100%);
+      background: -moz-linear-gradient(top, #585858 0%, #111 100%);
+      background: -ms-linear-gradient(top, #585858 0%, #111 100%);
+      background: -o-linear-gradient(top, #585858 0%, #111 100%);
+      background: linear-gradient(to bottom, #585858 0%, #111 100%);
+      border: 1px solid #111;
+      color: #fff !important;
+    }
+
+    &:active {
+      background-color: #2b2b2b;
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #2b2b2b), color-stop(100%, #0c0c0c));
+      background: -webkit-linear-gradient(top, #2b2b2b 0%, #0c0c0c 100%);
+      background: -moz-linear-gradient(top, #2b2b2b 0%, #0c0c0c 100%);
+      background: -ms-linear-gradient(top, #2b2b2b 0%, #0c0c0c 100%);
+      background: -o-linear-gradient(top, #2b2b2b 0%, #0c0c0c 100%);
+      background: linear-gradient(to bottom, #2b2b2b 0%, #0c0c0c 100%);
+      box-shadow: inset 0 0 3px #111;
+      outline: none;
+    }
+  }
+}
+
+// Responsiveness
+@media screen and (max-width: $small-start) {
+  .dataTables_length,
+  .dataTables_filter,
+  .dataTables_info,
+  .dataTables_paginate {
+    float: none;
+    text-align: center;
+  }
+
+  .dataTables_filter,
+  .dataTables_paginate { margin-top: 0.5em; }
+}
