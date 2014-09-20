@@ -59,13 +59,21 @@
         <h3 class="dashboard-header">Summary</h3>
 
         <div class="well">
+        
+        <!-- I would have used a <dl /> list here for cleaner markup and better accessibility -->
+        
           <div class="tweets-total clearfix">
             <p class="float-left">Total Tweets</p>
+            
+            <!-- A trick we often use is to add classes like js-* when we need to manipulate
+                 a DOM element often but not style it. A .js-total-tweets class would save you
+                 some DOM traversal in your JS. -->
             <p class="total float-right">0</p>
           </div>
 
           <div class="tweets-follow-up clearfix">
             <p class="float-left">Marked for Follow Up</p>
+            <!-- Same here: .js-total-followup -->
             <p class="total float-right">0</p>
           </div>
         </div><!-- .well -->
