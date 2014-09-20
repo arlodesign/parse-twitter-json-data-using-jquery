@@ -52,9 +52,15 @@ function hideClosest(parent, selector) {
       
       /*
         Deleting a tweet that has follow up checked is not an edge case. It could be solved easily
-        right here. This also illustrates the biggest concern with this Javascript: in order to
-        solve it right here, you would have to check if the follow-up checkbox is checked. You
-        should never rely on the DOM for your data.
+        right here by checking if the follow-up checkbox is checked.
+        
+        A number of other things need to happen here. Your datatable needs to be updated so that
+        the pagination works. It's great that you added the feature, but it really needed to work.
+        
+        Things like this are an example of why relying on the DOM for your data is a no-no. How
+        your data is presented in the browser should be a byproduct of the manipulation of the
+        data, not the other way around. Add a few more features to this page, and you'll have
+        a mess on your hands.
       */
 
       $('.tweets-total .total').text(numberTweets);
