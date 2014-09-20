@@ -1,7 +1,13 @@
+/* Nothing should truly be "global" unless you have a good reason. */
+
 // Global variables for "summary" incrementors
 var numberFollowUp = 0;
 var numberTweets = 0;
 
+/*
+  This should use JavaScript's native Date() object. Then you could
+  sort on the timestamp but still display dates as you want in the table.
+*/
 
 /**
 * Helper function for formatting dates from the JSON data
@@ -19,6 +25,16 @@ function formatDate(date) {
 }
 
 
+/* Or:
+
+  $('.tweets-result').on('click', '.tweet-remove', function() {
+    // all your stuff...
+  });
+  
+  Then you have one event listener instead of 100. You could store the ID in a data attribute.
+  
+*/
+
 /**
 * Helper function for hiding the first element that matches
 * the {selector} parameter in the {parent} parameter.
@@ -33,6 +49,13 @@ function hideClosest(parent, selector) {
       $(this).closest(selector).fadeOut();
 
       numberTweets--;
+      
+      /*
+        Deleting a tweet that has follow up checked is not an edge case. It could be solved easily
+        right here. This also illustrates the biggest concern with this Javascript: in order to
+        solve it right here, you would have to check if the follow-up checkbox is checked. You
+        should never rely on the DOM for your data.
+      */
 
       $('.tweets-total .total').text(numberTweets);
     }
@@ -61,7 +84,18 @@ function addFollowUp(id) {
   });
 }
 
-
+/* If your javascript is at the bottom of your HTML, $(document).ready() is not necessary.
+  A self-calling function like:
+  
+    (function($){
+      ...
+    })(jQuery)
+    
+  is better and faster.
+  
+  Also, all of your helper functions and variables should be INSIDE this function so the
+  global scope is not polluted and the names can be minified.
+*/
 $(document).ready(function() {
   // Start AJAX request
   $.ajax({
@@ -70,12 +104,22 @@ $(document).ready(function() {
     success: function(data) {
       // Store the JSON data
       var tweetData = $.parseJSON(data);
+      
+      /* This would be much faster:
+          
+          numberTweets = tweetData.tweets.length;
+          
+      */
 
       // Loop through JSON values and build the table
       $.each(tweetData.tweets, function(index, item) {
         // Count number of tweets
         numberTweets++;
 
+        /* Templates will make your life a lot easier for this stuff.
+          We use Mustache templates compiled with Hogan.
+        */
+        
         // Build and append table rows for each JSON value
         $('.tweets-result').append(
           '<tr class="' + item.id + '">' +
@@ -96,6 +140,13 @@ $(document).ready(function() {
         hideClosest("#remove-tweet-" + item.id, "tr");
       });
 
+      /* http://www.datatables.net/manual/orthogonal-data
+      
+        Since you chose datatables for your library, you had an opportunity
+        to simply pass the data directly to it. You also could have used that
+        to handle the date sorting.
+      */
+      
       // Use `datatables` plugin to add sorting
       $('.table-sort').dataTable({
         // Set which columns are sortable
