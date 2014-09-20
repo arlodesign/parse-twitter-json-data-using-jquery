@@ -2,6 +2,7 @@
 //  SITE HEADER
 //------------------------------------
 .site-header {
+  // Mixins or a library like Autoprefixer will save you a lot of time with these
   background: rgb(85,85,85);
   background: -moz-linear-gradient(top,  rgba(85,85,85,1) 0%, rgba(38,38,38,1) 100%);
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(85,85,85,1)), color-stop(100%,rgba(38,38,38,1)));
@@ -135,6 +136,8 @@ table.dataTable {
   thead {
     th:active,
     td:active { outline:none; }
+    
+    // Try doing this without images.
 
     .sorting { background:url("../images/sort_both.png") no-repeat center right; }
 
